@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: use node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18.x'
       - run: npm install
@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: use node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18.x'
       - run: npm install
@@ -36,26 +36,26 @@ jobs:
       url: ${{steps.deployment.outputs.page_url}}
     steps:
       - name: checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: use node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18.x'
       - name: configure github pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
         with:
           static-site-generator: next
       - run: npm install
       - run: npm run build
       - name: upload artifacts
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: "./out"
       - name: deploy
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
 
 
       
